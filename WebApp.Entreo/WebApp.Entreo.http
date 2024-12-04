@@ -1,0 +1,25 @@
+﻿@WebApp.Entreo_HostAddress = https://localhost:7038
+
+GET {{WebApp.Entreo_HostAddress}}/api/habit
+
+###
+
+GET {{WebApp.Entreo_HostAddress}}/api/translation/nl-nl?fieldName=Translate%20this
+
+###
+
+GET {{WebApp.Entreo_HostAddress}}/api/translation/language/nl-nl
+
+###
+
+POST {{WebApp.Entreo_HostAddress}}/api/WebPush/send?title=aa&message=dd&email=example%40example.com
+Content-Type: application/json
+
+{
+  FieldName:"TranslateThis",
+  LanguageCode: "nl-nl",
+  Value: "VertaalDit",
+  TranslationSource: "Test"
+}
+
+###

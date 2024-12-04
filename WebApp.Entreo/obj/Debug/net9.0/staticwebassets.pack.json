@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\Blazor Projects\\New Folder\\AtomicHabits\\WebApp.Entreo\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "E:\\Blazor Projects\\New Folder\\AtomicHabits\\WebApp.Entreo\\wwwroot\\icon.png",
+      "PackagePath": "staticwebassets\\icon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebApp.Entreo.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebApp.Entreo.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.WebApp.Entreo.props",
+      "PackagePath": "build\\WebApp.Entreo.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.WebApp.Entreo.props",
+      "PackagePath": "buildMultiTargeting\\WebApp.Entreo.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.WebApp.Entreo.props",
+      "PackagePath": "buildTransitive\\WebApp.Entreo.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

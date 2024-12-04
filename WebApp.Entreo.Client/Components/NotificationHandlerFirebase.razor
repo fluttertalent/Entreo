@@ -1,0 +1,175 @@
+@using WebApp.Entreo.Client.Models
+@inject IJSRuntime JSRuntime
+@inject ILogger<NotificationHandlerFirebase> Logger
+@inject ISnackbar Snackbar
+
+<MudCard Class="ma-4">
+    <MudCardContent>
+        <MudButton Color="Color.Primary"
+                   Variant="Variant.Filled"
+                   OnClick="InitializeNotificationsAsync"
+                   Disabled="@_isLoading">
+            @if (_isLoading)
+            {
+                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                <MudText Class="ms-2">Loading...</MudText>
+            }
+            else
+            {
+                <MudText>Enable Notifications</MudText>
+            }
+        </MudButton>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    private bool _isLoading;
+    private DotNetObjectReference<NotificationHandlerFirebase> _objectReference;
+
+    private async Task InitializeNotificationsAsync()
+    {
+        try
+        {
+            _isLoading = true;
+            StateHasChanged();
+
+            await JSRuntime.InvokeVoidAsync("eval", @"
+                new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = 'firebase-app.js';
+                    script.type='module';
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.head.appendChild(script);
+                });
+            ");
+            await JSRuntime.InvokeVoidAsync("eval", @"
+                new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = 'firebase-analytics.js';
+                    script.type='module';
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.head.appendChild(script);
+                });
+            ");
+
+            // Load notifications script dynamically
+            await JSRuntime.InvokeVoidAsync("eval", @"
+                new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = '/js/firebase-notifications.js';
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.head.appendChild(script);
+                });
+            ");
+
+            // Register service worker
+            await JSRuntime.InvokeVoidAsync("eval", @"
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker
+                        .register('/firebase-messaging-sw.js')
+                        .then(function(registration) {
+                            console.log('Service Worker registered:', registration);
+                        })
+                        .catch(function(error) {
+                            console.error('Service Worker registration failed:', error);
+                        });
+                }
+            ");
+
+            // Wait a bit for the script to initialize
+            await Task.Delay(500);
+
+            _objectReference = DotNetObjectReference.Create(this);
+            var permission = await JSRuntime.InvokeAsync<string>("firebaseNotifications.requestPermission");
+
+            if (permission == "granted")
+            {
+                await JSRuntime.InvokeVoidAsync(
+                    "firebaseNotifications.initializeMessaging",
+                    _objectReference,
+                    "OnMessageReceived",
+                    "OnTokenRefresh"
+                );
+
+                var token = await JSRuntime.InvokeAsync<string>("firebaseNotifications.getToken");
+                if (!string.IsNullOrEmpty(token))
+                {
+                    Logger.LogInformation("FCM Token obtained: {Token}", token);
+                    Snackbar.Add("Notifications enabled successfully!", Severity.Success);
+                }
+            }
+            else
+            {
+                Snackbar.Add("Please allow notifications in your browser settings", Severity.Warning);
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error initializing notifications");
+            Snackbar.Add("Failed to initialize notifications", Severity.Error);
+        }
+        finally
+        {
+            _isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    [JSInvokable]
+    public async Task OnMessageReceived(NotificationMessage message)
+    {
+        try
+        {
+            Snackbar.Add(message.Title, Severity.Info, config =>
+            {
+                config.VisibleStateDuration = 10000;
+                config.ShowCloseIcon = true;
+                config.Action = "View";
+                config.ActionColor = Color.Primary;
+                config.Onclick = snackbar =>
+                {
+                    HandleNotificationClick(message);
+                    return Task.CompletedTask;
+                };
+            });
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error handling received message");
+        }
+    }
+
+    [JSInvokable]
+    public async Task OnTokenRefresh(string newToken)
+    {
+        try
+        {
+            Logger.LogInformation("FCM Token refreshed: {Token}", newToken);
+            // Send new token to your server
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error handling token refresh");
+        }
+    }
+
+    private void HandleNotificationClick(NotificationMessage message)
+    {
+        Logger.LogInformation("Notification clicked: {Type}", message.Type);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            _objectReference?.Dispose();
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error disposing NotificationHandlerFirebase");
+        }
+    }
+} 

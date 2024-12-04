@@ -1,0 +1,19 @@
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Client\wwwroot\firebase-analytics.js
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Client\wwwroot\js\firebase-notifications.js
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Client\wwwroot\appsettings.json
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Client\wwwroot\js\pushNotifications.js
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Client\wwwroot\js\lottie-animation.js
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Client\wwwroot\firebase-app.js
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Client\wwwroot\appsettings.Development.json
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Client\wwwroot\css\app.css
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Client\wwwroot\firebase-messaging-sw.js
+wwwroot\appsettings.Development.json
+wwwroot\appsettings.json
+wwwroot\css\app.css
+wwwroot\firebase-analytics.js
+wwwroot\firebase-app.js
+wwwroot\firebase-messaging-sw.js
+wwwroot\img\icon-512.png
+wwwroot\js\firebase-notifications.js
+wwwroot\js\lottie-animation.js
+wwwroot\js\pushNotifications.js

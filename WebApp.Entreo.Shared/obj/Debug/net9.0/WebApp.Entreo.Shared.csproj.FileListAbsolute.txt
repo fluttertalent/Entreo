@@ -1,0 +1,13 @@
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\bin\Debug\net9.0\WebApp.Entreo.Shared.deps.json
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\bin\Debug\net9.0\WebApp.Entreo.Shared.dll
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\bin\Debug\net9.0\WebApp.Entreo.Shared.pdb
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\obj\Debug\net9.0\WebApp.Entreo.Shared.csproj.AssemblyReference.cache
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\obj\Debug\net9.0\WebApp.Entreo.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\obj\Debug\net9.0\WebApp.Entreo.Shared.AssemblyInfoInputs.cache
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\obj\Debug\net9.0\WebApp.Entreo.Shared.AssemblyInfo.cs
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\obj\Debug\net9.0\WebApp.Entreo.Shared.csproj.CoreCompileInputs.cache
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\obj\Debug\net9.0\WebApp.Entreo.Shared.sourcelink.json
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\obj\Debug\net9.0\WebApp.Entreo.Shared.dll
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\obj\Debug\net9.0\refint\WebApp.Entreo.Shared.dll
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\obj\Debug\net9.0\WebApp.Entreo.Shared.pdb
+E:\Blazor Projects\New Folder\AtomicHabits\WebApp.Entreo.Shared\obj\Debug\net9.0\ref\WebApp.Entreo.Shared.dll
